@@ -54,7 +54,7 @@ jobs:
         run: uvx --with tox-uv --with tox-gh tox
 
       - name: Upload coverage data
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-data-${{ matrix.python-version }}-${{ matrix.os }}
           path: ".coverage*"
@@ -76,7 +76,7 @@ jobs:
           enable-cache: true
 
       - name: Download coverage data
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           pattern: coverage-data-*
           merge-multiple: true
@@ -90,7 +90,7 @@ jobs:
         run: uvx --with coverage[toml] coverage html --skip-covered --skip-empty --ignore-errors
 
       - name: Upload the HTML report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: html-report
           path: htmlcov
